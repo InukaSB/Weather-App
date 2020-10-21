@@ -13,6 +13,7 @@ window.addEventListener('load', () => {
    const temperatureSpanNonActive = document.querySelector('.temperature .not-active');
    const windSpan = document.querySelector('.wind-section .now');
    const windSpanNext = document.querySelector('.wind-section .next');
+   const sound = document.querySelector('.sound');
 
 
    if (navigator.geolocation) {
@@ -53,10 +54,14 @@ window.addEventListener('load', () => {
                      temperatureSpan.textContent ="°C";
                      temperatureSpanNonActive.textContent = "| °F";
                      temperatureDegree.textContent = Math.floor(celsius);
+                     sound.currentTime = 0;
+                     sound.play();
                   } else {
                      temperatureSpan.textContent ="°F";
                      temperatureDegree.textContent = Math.floor(temperature);
                      temperatureSpanNonActive.textContent = "| °C";
+                     sound.currentTime = 0;
+                     sound.play();
                   }
                }); 
 
@@ -65,11 +70,15 @@ window.addEventListener('load', () => {
                      windSpan.textContent = "km/h";
                      windSpanNext.textContent = "| mph";
                      locationWindspeed.textContent = Math.floor(kmh);
+                     sound.currentTime = 0;
+                     sound.play();
 
                   } else {
                      windSpan.textContent = "mph";
                      windSpanNext.textContent = "| km/h";
                      locationWindspeed.textContent = Math.floor(windSpeed);
+                     sound.currentTime = 0;
+                     sound.play();
                   }
                });
             });
