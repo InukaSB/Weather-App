@@ -10,9 +10,10 @@ body {
     justify-content: center;
     /* flex-direction: column; */
     align-items: center;
-    background: #5f2c82;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #49a09d, #5f2c82); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #2193b0;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 
     font-family: 'Sulphur Point', sans-serif;;
     color: black;
@@ -63,7 +64,11 @@ background: linear-gradient(to right, #49a09d, #5f2c82); /* W3C, IE 10+/ Edge, F
 .degree-section span {
     margin: 10px;
     font-size: 30px;
-    opacity: 50%;
+    opacity: 30%;
+}
+
+.degree-section .active {
+    opacity: 100%;
 }
 
 .degree-section h2 {
@@ -89,11 +94,28 @@ background: linear-gradient(to right, #49a09d, #5f2c82); /* W3C, IE 10+/ Edge, F
     padding-right: 10px;
 }
 
+.wind-section {
+    cursor: pointer;
+}
+
+.wind-section .now {
+    padding-left: 5px;
+}
+
+.wind-section .next {
+    opacity: 40%;
+}
+
 .otherDetails > div > div {
     font-weight: bold;
 }
 
-@media (max-width: 420px) {
+@media (max-width:600px) {
+    .tempAndOther {
+        flex-direction: column;
+        padding-bottom: 100px;
+    }
+
     .icon {
         height: 100px;
         width: 100px;
@@ -102,4 +124,12 @@ background: linear-gradient(to right, #49a09d, #5f2c82); /* W3C, IE 10+/ Edge, F
     .location h1 {
         font-size: 30px;
     }
+
+    .otherDetails {
+        padding-top: 10px;
+    }
+}
+
+@media (max-width: 420px) {
+
 }

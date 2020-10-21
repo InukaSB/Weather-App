@@ -8,7 +8,11 @@ window.addEventListener('load', () => {
    let locationHumidity = document.querySelector('.humidity');
    let locationWindspeed = document.querySelector('.windspeed');
    let locationUVIndex = document.querySelector('.UVIndex');
-   const temperatureSpan = document.querySelector('.temperature span');
+   let locationWindSection = document.querySelector('.wind-section');
+   const temperatureSpan = document.querySelector('.temperature .active');
+   const temperatureSpanNonActive = document.querySelector('.temperature .not-active');
+   const windSpan = document.querySelector('.wind-section .now');
+   const windSpanNext = document.querySelector('.wind-section .next');
 
 
    if (navigator.geolocation) {
@@ -28,16 +32,17 @@ window.addEventListener('load', () => {
                const { temperature, summary, icon, humidity, uvIndex, windSpeed } = data.currently;
                // set DOM Elements from the API
 
-               temperatureDegree.textContent = temperature;
+               temperatureDegree.textContent = Math.floor(temperature);
                temperatureDescription.textContent = summary;
                locationTimezone.textContent = data.timezone;
-               locationHumidity.textContent = humidity;
-               locationWindspeed.textContent = windSpeed;
+               locationHumidity.textContent = (humidity * 100);
+               locationWindspeed.textContent = Math.floor(windSpeed);
                locationUVIndex.textContent = uvIndex;
 
                //Formula for celcius
 
                let celsius = (temperature - 32) * (5 / 9);
+               let kmh = (windSpeed * 1.609);
 
                //Set Icon
                setIcons(icon, document.querySelector('.icon'));
@@ -46,12 +51,27 @@ window.addEventListener('load', () => {
                temperatureSection.addEventListener('click', ()=>{
                   if(temperatureSpan.textContent === "°F"){
                      temperatureSpan.textContent ="°C";
+                     temperatureSpanNonActive.textContent = "| °F";
                      temperatureDegree.textContent = Math.floor(celsius);
-                  }else{
+                  } else {
                      temperatureSpan.textContent ="°F";
-                     temperatureDegree.textContent = temperature;
+                     temperatureDegree.textContent = Math.floor(temperature);
+                     temperatureSpanNonActive.textContent = "| °C";
                   }
                }); 
+
+               locationWindSection.addEventListener('click', () =>{
+                  if(windSpan.textContent === "mph"){
+                     windSpan.textContent = "km/h";
+                     windSpanNext.textContent = "| mph";
+                     locationWindspeed.textContent = Math.floor(kmh);
+
+                  } else {
+                     windSpan.textContent = "mph";
+                     windSpanNext.textContent = "| km/h";
+                     locationWindspeed.textContent = Math.floor(windSpeed);
+                  }
+               });
             });
       });
    }
