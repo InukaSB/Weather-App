@@ -137,7 +137,7 @@ body {
 
 .darkMode {
     position: absolute;
-    bottom: 0;
+    bottom: -15px;
     right: -15px;
     transform: translate(-50%, -50%);
     background: rgb(32, 32, 32);
