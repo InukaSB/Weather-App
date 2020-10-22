@@ -15,6 +15,14 @@ window.addEventListener('load', () => {
    const windSpanNext = document.querySelector('.wind-section .next');
    const sound = document.querySelector('.sound');
 
+   let darkMode = document.querySelector('.darkMode');
+   const currentDate = new Date();
+   const hourNow = currentDate.getHours();
+   // var hourNow = getHours();
+   // var minuteNow = getMinutes();
+   // var timeNow = hourNow + ":" + minuteNow;
+
+   console.log(currentDate);
 
    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
@@ -46,8 +54,32 @@ window.addEventListener('load', () => {
                let kmh = (windSpeed * 1.609);
 
                //Set Icon
-               setIcons(icon, document.querySelector('.icon'));
 
+               setIcons(icon, document.querySelector('.icon'), "white");
+
+               // switch color mode
+               darkMode.addEventListener('click', () => {
+
+                  if(document.querySelector(".darkMode p").textContent == "Dark Mode"){
+                     document.body.style.color = "white";
+                     document.body.style.background = "#12505f";
+                     document.querySelector(".app").style.background = "rgb(32, 32, 32)";
+                     document.querySelector(".darkMode p").textContent = "Light Mode";
+                     setIcons(icon, document.querySelector('.icon'), "white");
+                     // document.querySelector(".darkMode").style.background = "white";
+                     // document.querySelector(".darkMode p").style.color = "black";
+                  } else {
+                     document.body.style.color = "black";
+                     document.body.style.background = "#6dd5ed";
+                     document.querySelector(".app").style.background = "white";
+                     document.querySelector(".darkMode p").textContent = "Dark Mode";
+                     setIcons(icon, document.querySelector('.icon'), "black");                     // document.querySelector(".darkMode").style.background = "rgb(32, 32, 32)";
+                     // document.querySelector(".darkMode p").style.color = "white";
+                  }
+               
+               });
+               
+   
                //change temperature to Celcius/Faranheit
                temperatureSection.addEventListener('click', ()=>{
                   if(temperatureSpan.textContent === "°F"){
@@ -81,15 +113,36 @@ window.addEventListener('load', () => {
                      sound.play();
                   }
                });
+
+               // color Mode babsed on time
+
+               if(hourNow >= 18){
+                  document.body.style.color = "white";
+                  document.body.style.background = "#12505f";
+                  document.querySelector(".app").style.background = "rgb(32, 32, 32)";
+                  document.querySelector(".darkMode p").textContent = "Light Mode";
+                  setIcons(icon, document.querySelector('.icon'), "white");
+                  // document.querySelector(".darkMode").style.background = "white";
+                  // document.querySelector(".darkMode p").style.color = "black";
+               } else {
+                  document.body.style.color = "black";
+                  document.body.style.background = "#6dd5ed";
+                  document.querySelector(".app").style.background = "white";
+                  document.querySelector(".darkMode p").textContent = "Dark Mode";
+                  setIcons(icon, document.querySelector('.icon'), "black");                     // document.querySelector(".darkMode").style.background = "rgb(32, 32, 32)";
+                  // document.querySelector(".darkMode p").style.color = "white";
+               }
             });
       });
    }
 
-   function setIcons(icon, iconID){
-      const skycons = new Skycons({color:"black"});
+   function setIcons(icon, iconID, color){
+      const skycons = new Skycons({color:color});
       const currentIcon = icon.replace(/-/g, "_").toUpperCase();
       skycons.play();
       return skycons.set(iconID, Skycons[currentIcon]);
    }
+
+
 
 });

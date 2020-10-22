@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sulphur+Point">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sulphur+Point&family=Poppins">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
+
 <body>
-    <div class="app">
-        <div class="location">
-            <h1 class="location-timezone">Timezone</h1>
-            <canvas class="icon" width="128" height="128"></canvas>
-        </div>
-        <div class="tempAndOther">
-            <div class="temperature">
-                <div class="degree-section">
-                    <h2 class="temperature-degree">temp</h2>
-                    <span class="active">°F</span>
-                    <span class="not-active">| °C</span>
-                </div>
-                <div class="temperature-discription">temperature discription</div>
+    <div class="container">
+        <div class="app">
+            <div class="location">
+                <h1 class="location-timezone">Timezone</h1>
+                <canvas class="icon" width="128" height="128"></canvas>
             </div>
-            <div class="otherDetails">
-                <div class="humdity-section">
-                    <span>Humidity: </span>
-                    <div class="humidity"></div>
-                    <span>%</span>
+            <div class="tempAndOther">
+                <div class="temperature">
+                    <div class="degree-section">
+                        <h2 class="temperature-degree">temp</h2>
+                        <span class="active">°F</span>
+                        <span class="not-active">| °C</span>
+                    </div>
+                    <div class="temperature-discription">temperature discription</div>
                 </div>
-                <div class="wind-section">
-                    <span>Wind: </span>
-                    <div class="windspeed"></div>
-                    <span class="now">mph</span>
-                    <span class="next">| km/h</span>
-                </div>
-                <div class="UVIndex-section">
-                    <span>UV Index: </span>
-                    <div class="UVIndex"></div>
+                <div class="otherDetails">
+                    <div class="humdity-section">
+                        <span>Humidity: </span>
+                        <div class="humidity"></div>
+                        <span class="humidityUnit">%</span>
+                    </div>
+                    <div class="wind-section">
+                        <span>Wind: </span>
+                        <div class="windspeed"></div>
+                        <span class="now">mph</span>
+                        <span class="next">| km/h</span>
+                    </div>
+                    <div class="UVIndex-section">
+                        <span>UV Index: </span>
+                        <div class="UVIndex"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="darkMode">
+        <p>Dark Mode</p>
+    </div>
 
-    <audio src="Hardware Remove.wav" class="sound"></audio>
+    <audio src="Elevator Ding.wav" class="sound"></audio>
     <script src="skycons.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
